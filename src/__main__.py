@@ -34,7 +34,7 @@ def run(output):
         quests.save_json_kcq()
         print('Success')
     elif args.command == 'conntower':
-        json_path = os.path.join(output, 'equip.json')
+        json_path = os.path.join(output, 'assets', 'equip.json')
         equip_dict_gen(json_path)
         print('ConningTower')
     else:

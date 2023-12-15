@@ -23,14 +23,14 @@ class Quests:
 
     def query_solt_items(self):
         result = self.session.get(SLOT_ITEM_URL)
-        with open(os.path.join(self.output, 'equip.json'), 'w') as f:
+        with open(os.path.join(self.output, 'assets', 'equip.json'), 'w') as f:
             f.write(result.text)
         items = json.loads(result.text)
         for item in items:
             self.slot_items[item["id"]] = item["chinese_name"] if item["chinese_name"] is not None else item["name"]
 
     def load_solt_items(self):
-        with open(os.path.join(self.output, 'equip.json')) as f:
+        with open(os.path.join(self.output, 'assets', 'equip.json')) as f:
             result = f.read()
             items = json.loads(result)
             for item in items:
