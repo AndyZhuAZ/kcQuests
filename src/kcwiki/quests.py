@@ -49,7 +49,7 @@ class Quests:
         # text = filter_text(text, FILTERS)
         pages = text.split('页首}}\n')
         for page_index, page in enumerate(pages[1:]):
-            output_path = os.path.join(self.output, 'rs')
+            output_path = os.path.join(self.output, 'temp')
             if not os.path.exists(output_path):
                 os.makedirs(output_path)
             with open(os.path.join(output_path, '{}-{}.txt'.format(index, page_index)), 'w',
