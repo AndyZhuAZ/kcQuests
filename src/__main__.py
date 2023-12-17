@@ -18,6 +18,8 @@ def run(output):
 
     parser_command2 = subparsers.add_parser(
         'conntower', help='For ConningTower')
+    parser_command2.add_argument(
+        '-d', '--download', help='Need download new items data')
     # parser_command2.add_argument('arg', type=int, help='Argument')
 
     args = parser.parse_args()
@@ -34,9 +36,19 @@ def run(output):
         quests.save_json_kcq()
         print('Success')
     elif args.command == 'conntower':
-        json_path = os.path.join(output, 'assets', 'equip.json')
-        equip_dict_gen(json_path)
+        # json_path = os.path.join(output, 'assets', 'equip.json')
+        # equip_dict_gen(json_path)
         print('ConningTower')
+        quests = Quests()
+        quests.set_output(output)
+        quests.query_raw_text()
+        if args.download == 1:
+            quests.query_solt_items()
+        else:
+            quests.load_solt_items()
+        quests.parse()
+        quests.save_json_conning_tower()
+        print('Success')
     else:
         parser.print_help()
 

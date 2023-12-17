@@ -77,6 +77,13 @@ class Quests:
                 content = json.dumps(d, sort_keys=True, ensure_ascii=False, indent=2)
                 f.write(content)
 
+    def save_json_conning_tower(self):
+        d = [quest.to_conning_tower_format() for quest in self.quests]
+        filename = os.path.join(self.output, 'quests_zh_Hans.json')
+        with open(filename, 'w', encoding='utf-8') as f:
+            content = json.dumps(d, ensure_ascii=False, indent=2)
+            f.write(content)
+
     def parse(self):
         self.quest_map = {}
         for key in self.files.keys():

@@ -30,6 +30,7 @@ jobs:
     - name: Run
       run: |
         python run.py kcQuests -d 1
+        python run.py conntower -d 0
     - name: Copy file
       run: |
         cp quests-scn.json dist/quests-scn.json
