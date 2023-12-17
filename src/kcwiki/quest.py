@@ -80,6 +80,7 @@ class Quest:
     def from_wt_template(cls, template, items):
         quest = cls()
         quest.id = template.comments[0].contents.strip()
+        assert quest.id.isdigit()
         for arg in template.arguments:
             name = arg.name.strip()
             value = arg.value.strip()
